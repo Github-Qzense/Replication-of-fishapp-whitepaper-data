@@ -1,1 +1,1 @@
-# codespaces-practice
+# Whitepaper Replication
