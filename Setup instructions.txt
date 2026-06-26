@@ -9,7 +9,7 @@ Create virtual env:
 2.	uv venv --python 3.9 .venv
 3.	source .venv/bin/activate for mac/linux 
 	.venv\Scripts\activate for windows
-4.	uv pip install -r requirements.txt
+4.	uv pip install -r requirements.txt # requirements_macos.txt for Mac OS.
 	normal pip install -r requirements.txt is showed some conflicts between numpy and opencv for me in windows, so I used uv pip
 5. check if opencv is installed properly:
 	python
