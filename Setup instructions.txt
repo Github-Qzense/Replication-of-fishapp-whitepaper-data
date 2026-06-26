@@ -11,9 +11,16 @@ Create virtual env:
 	.venv\Scripts\activate for windows
 4.	uv pip install -r requirements.txt
 	normal pip install -r requirements.txt is showed some conflicts between numpy and opencv for me in windows, so I used uv pip
+5. check if opencv is installed properly:
+	python
+	import cv2
+	exit()
+	if it throws any errors, run the below commands in linux terminal
+	sudo apt update
+	sudo apt install -y libgl1
 
 
-Also run these commands in Linux
+If it still shows any errors in Linux, refer to these commands 
 sudo rm /etc/apt/sources.list.d/yarn.list
 sudo apt-get update
 sudo apt-get install -y libgl1 libgl1-mesa-dri libglib2.0-0t64
