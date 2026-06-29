@@ -1,2 +1,12 @@
 *.bin
 *.pt
+
+# Virtual environment
+.venv/
+venv/
+ENV/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
