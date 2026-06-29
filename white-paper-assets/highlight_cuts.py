@@ -14,7 +14,7 @@ from ultralytics import YOLO
 # ------------------------------------------------------------------
 # Load Cut Segmentation Model
 # ------------------------------------------------------------------
-CUT_MODEL_PATH = r"C:\Users\sowmy\Downloads\Sowmya KT\computer vision projects\Fish Freshness classification\white paper\replication experiments\sardine-mackerel white paper replication\mobileapp models\cut-seg_openvino_model" # replace with your model path
+CUT_MODEL_PATH = r"mobileapp models\cut-seg_openvino_model" # replace with your model path
 
 cut_model = YOLO(CUT_MODEL_PATH, task="segment")
 
@@ -96,7 +96,7 @@ def map_polygon_to_original(polygon, transform):
 # ------------------------------------------------------------------
 def highlight_cuts(
     image,
-    save_path="fish_cuts.png",
+    save_path="generated-results/fish_cuts.png",
     conf=0.5,
     alpha=0.3,
     dpi=300,
@@ -258,16 +258,16 @@ def highlight_cuts(
 if __name__ == "__main__":
 
     highlighted = highlight_cuts(
-        "20240725122127428_sardine_bad_fish_segmented_0.png", # replace with your image path
-        save_path="sardine_fish_cuts.png",
+        "sample-inputs/20240725122127428_sardine_bad_fish_segmented_0.png", # replace with your image path
+        save_path="generated-results/sardine_fish_cuts.png",
         conf=0.5,
         dpi=1200,
     )
     
     
     highlighted = highlight_cuts(
-        "20240530110600131_mackerel_bad_fish_segmented_0.png", # replace with your image path
-        save_path="mackerel_fish_cuts.png",
+        "sample-inputs/20240530110600131_mackerel_bad_fish_segmented_0.png", # replace with your image path
+        save_path="generated-results/mackerel_fish_cuts.png",
         conf=0.5,
         dpi=1200,
     )

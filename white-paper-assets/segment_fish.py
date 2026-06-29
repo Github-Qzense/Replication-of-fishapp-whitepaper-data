@@ -14,7 +14,7 @@ from ultralytics import YOLO
 # ------------------------------------------------------------------
 # Load Fish Segmentation Model
 # ------------------------------------------------------------------
-FISH_MODEL_PATH = r"C:\Users\sowmy\Downloads\Sowmya KT\computer vision projects\Fish Freshness classification\white paper\replication experiments\sardine-mackerel white paper replication\mobileapp models\best_openvino_model" # replace with your model path
+FISH_MODEL_PATH = r"mobileapp models\best_openvino_model" # replace with your model path
 
 fish_model = YOLO(FISH_MODEL_PATH, task="segment")
 print("Model loaded")
@@ -94,7 +94,7 @@ def extract_single_image_segment(
 # ------------------------------------------------------------------
 def segment_fish(
     image,
-    save_path="segmented_fish.png",
+    save_path="generated-results/segmented_fish.png",
     conf=0.75,
     dpi=300,
     show=True,
@@ -164,7 +164,7 @@ def segment_fish(
             add_padding=True,
         )
         print(f"Saving {filename}...")   
-        save_path = f"{filename}_segmented_{idx}.png"     
+        save_path = f"generated-results/{filename}_segmented_{idx}.png"     
         plt.imsave(save_path, segmented, dpi=dpi)
        
         if show:
@@ -184,14 +184,14 @@ def segment_fish(
 if __name__ == "__main__":
     print("Running example...")
     segmented = segment_fish(
-        image="20240725122127428_sardine_bad.jpeg", # replace with your image path
+        image="sample-inputs/20240725122127428_sardine_bad.jpeg", # replace with your image path
         # save_path="fish_segmented.png",
         conf=0.75,
         dpi=1200,
     )
     
     segmented = segment_fish(
-        image="20240530110600131_mackerel_bad.jpeg", # replace with your image path
+        image="sample-inputs/20240530110600131_mackerel_bad.jpeg", # replace with your image path
         # save_path="fish_segmented.png",
         conf=0.75,
         dpi=1200,

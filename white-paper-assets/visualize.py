@@ -112,21 +112,21 @@ def show_comparison(
 if __name__ == "__main__":
 
     # show_comparison(
-    #     before="20240725122127428_sardine_bad_fish_segmented_0.png",
-    #     after="fish_cuts.png",
+    #     before="generated-results/20240725122127428_sardine_bad_fish_segmented_0.png",
+    #     after="generated-results/sardine_fish_cuts.png",
     #     before_title="Segmented Fish",
     #     after_title="Detected Damages",
     #     figure_title="Fish Damage Detection",
-    #     save_path="comparison.png",
+    #     save_path="generated-results/comparison.png",
     #     dpi=600,
     # )
     
     show_comparison(
-    before="20240725122127428_sardine_bad.jpeg",
-    after="20240725122127428_sardine_bad_fish_segmented_0.png",
+    before="sample-inputs/20240725122127428_sardine_bad.jpeg",
+    after="generated-results/20240725122127428_sardine_bad_fish_segmented_0.png",
     before_title="Original Image",
     after_title="Segmented Fish",
     figure_title="Fish Segmentation",
-    save_path="comparison1.png",
+    save_path="generated-results/comparison1.png",
     dpi=1200,
     )
