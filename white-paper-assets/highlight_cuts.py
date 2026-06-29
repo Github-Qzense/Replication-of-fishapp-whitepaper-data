@@ -14,7 +14,8 @@ from ultralytics import YOLO
 # ------------------------------------------------------------------
 # Load Cut Segmentation Model
 # ------------------------------------------------------------------
-CUT_MODEL_PATH = r"mobileapp models\cut-seg_openvino_model" # replace with your model path
+# CUT_MODEL_PATH = r"mobileapp models\cut-seg_openvino_model" # replace with your model path
+CUT_MODEL_PATH = r"../notebooks/mobileapp models/cut-seg_openvino_model" # replace with your model path
 
 cut_model = YOLO(CUT_MODEL_PATH, task="segment")
 
@@ -258,16 +259,16 @@ def highlight_cuts(
 if __name__ == "__main__":
 
     highlighted = highlight_cuts(
-        "sample-inputs/20240725122127428_sardine_bad_fish_segmented_0.png", # replace with your image path
-        save_path="generated-results/sardine_fish_cuts.png",
-        conf=0.5,
+        "./sample-inputs/20240725122127428_sardine_bad.jpeg", # replace with your image path
+        save_path="./generated-results/sardine_fish_cuts.png",
+        conf=0.85,
         dpi=1200,
     )
     
     
-    highlighted = highlight_cuts(
-        "sample-inputs/20240530110600131_mackerel_bad_fish_segmented_0.png", # replace with your image path
-        save_path="generated-results/mackerel_fish_cuts.png",
-        conf=0.5,
-        dpi=1200,
-    )
+    # highlighted = highlight_cuts(
+    #     "sample-inputs/20240530110600131_mackerel_bad_segmented_0.png", # replace with your image path
+    #     save_path="generated-results/mackerel_fish_cuts.png",
+    #     conf=0.5,
+    #     dpi=1200,
+    # )
