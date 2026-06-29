@@ -19,7 +19,7 @@
 	then Graphviz isn't installed or isn't on your PATH.
 
 	Mac - sudo port install graphviz
-	Linux - sudo apt install graphviz
+	Linux - 1. sudo apt update 2.sudo apt install graphviz
 	Windows - https://graphviz.org/download/
 
 	After installation, ensure this folder exists:
