@@ -164,7 +164,7 @@ def segment_fish(
             add_padding=True,
         )
         print(f"Saving {filename}...")   
-        save_path = f"{filename}_fish_segmented_{idx}.png"     
+        save_path = f"{filename}_segmented_{idx}.png"     
         plt.imsave(save_path, segmented, dpi=dpi)
        
         if show:
