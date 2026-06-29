@@ -257,18 +257,17 @@ def highlight_cuts(
 # Example
 # ------------------------------------------------------------------
 if __name__ == "__main__":
-
     highlighted = highlight_cuts(
-        "./sample-inputs/20240725122127428_sardine_bad.jpeg", # replace with your image path
-        save_path="./generated-results/sardine_fish_cuts.png",
+        "generated-results/2024-12-24_10_10_40_(18130)_sardine_input_segmented_1.png", # replace with your image path
+        save_path="generated-results/sardine_fish_cuts.png",
         conf=0.85,
         dpi=1200,
     )
     
     
-    # highlighted = highlight_cuts(
-    #     "sample-inputs/20240530110600131_mackerel_bad_segmented_0.png", # replace with your image path
-    #     save_path="generated-results/mackerel_fish_cuts.png",
-    #     conf=0.5,
-    #     dpi=1200,
-    # )
+    highlighted = highlight_cuts(
+        "generated-results/2025-01-28_10_50_33_(19200)_mackerel_input_segmented_0.png", # replace with your image path
+        save_path="generated-results/mackerel_fish_cuts.png",
+        conf=0.85,
+        dpi=1200,
+    )

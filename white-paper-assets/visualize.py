@@ -27,65 +27,50 @@ def show_comparison(
     before_title="Before",
     after_title="After",
     figure_title="Comparison",
-    save_path="comparison.png",
+    save_path="generated-results/comparison.png",
     dpi=300,
     figsize=(12, 6),
     show=True,
 ):
     """
-    Display and save a side-by-side comparison.
-
-    Parameters
-    ----------
-    before : str or ndarray
-        Original image.
-
-    after : str or ndarray
-        Processed image.
-
-    before_title : str
-        Left subplot title.
-
-    after_title : str
-        Right subplot title.
-
-    figure_title : str
-        Overall figure title.
-
-    save_path : str
-        Output filename.
-
-    dpi : int
-        Image quality.
-        150  -> Screen
-        300  -> Paper
-        600  -> High-quality publication
-        1200 -> Ultra-high quality
-
-    figsize : tuple
-        Figure size.
-
-    show : bool
-        Whether to display the figure.
+    Display one original image beside one or more processed images.
     """
 
     before = _read_image(before)
-    after = _read_image(after)
 
-    fig, axes = plt.subplots(
-        1,
-        2,
-        figsize=figsize,
+    # Allow single image or list
+    if not isinstance(after, (list, tuple)):
+        after = [after]
+
+    after = [_read_image(img) for img in after]
+
+    n = len(after)
+
+    fig = plt.figure(
+        figsize=(figsize[0], max(figsize[1], 3 * n)),
         constrained_layout=True,
     )
 
-    axes[0].imshow(before)
-    axes[0].set_title(before_title, fontsize=14)
-    axes[0].axis("off")
+    gs = fig.add_gridspec(n, 2)
 
-    axes[1].imshow(after)
-    axes[1].set_title(after_title, fontsize=14)
-    axes[1].axis("off")
+    # Original image spans all rows
+    ax_before = fig.add_subplot(gs[:, 0])
+    ax_before.imshow(before)
+    ax_before.set_title(before_title, fontsize=14)
+    ax_before.axis("off")
+
+    # Processed images
+    for i, img in enumerate(after):
+        ax = fig.add_subplot(gs[i, 1])
+        ax.imshow(img)
+
+        if n == 1:
+            title = after_title
+        else:
+            title = f"{after_title} {i+1}"
+
+        ax.set_title(title, fontsize=14)
+        ax.axis("off")
 
     fig.suptitle(
         figure_title,
@@ -107,26 +92,26 @@ def show_comparison(
 
     print(f"✓ Figure saved to: {save_path}")
     print(f"✓ DPI: {dpi}")
-
+    
 
 if __name__ == "__main__":
-
-    # show_comparison(
-    #     before="generated-results/20240725122127428_sardine_bad_fish_segmented_0.png",
-    #     after="generated-results/sardine_fish_cuts.png",
-    #     before_title="Segmented Fish",
-    #     after_title="Detected Damages",
-    #     figure_title="Fish Damage Detection",
-    #     save_path="generated-results/comparison.png",
-    #     dpi=600,
-    # )
-    
     show_comparison(
-    before="sample-inputs/20240725122127428_sardine_bad.jpeg",
-    after="generated-results/20240725122127428_sardine_bad_fish_segmented_0.png",
+    before="sample-inputs/2024-12-24_10_10_40_(18130)_sardine_input.jpeg",
+    after=["generated-results/2024-12-24_10_10_40_(18130)_sardine_input_segmented_0.png",
+           "generated-results/2024-12-24_10_10_40_(18130)_sardine_input_segmented_1.png"],
     before_title="Original Image",
     after_title="Segmented Fish",
     figure_title="Fish Segmentation",
     save_path="generated-results/comparison1.png",
     dpi=1200,
+    )
+    
+    show_comparison(
+        before="generated-results/2024-12-24_10_10_40_(18130)_sardine_input_segmented_1.png",
+        after="generated-results/sardine_fish_cuts.png",
+        before_title="Segmented Fish",
+        after_title="Detected Damages",
+        figure_title="Fish Damage Detection",
+        save_path="generated-results/comparison2.png",
+        dpi=600,
     )
