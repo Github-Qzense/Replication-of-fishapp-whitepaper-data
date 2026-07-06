@@ -18,7 +18,7 @@
 	If you get, 'dot' is not recognized...
 	then Graphviz isn't installed or isn't on your PATH.
 
-	Mac - sudo port install graphviz
+	Mac - brew install graphviz
 	Linux - 1. sudo apt update 2.sudo apt install graphviz
 	Windows - https://graphviz.org/download/
 
@@ -39,3 +39,9 @@
 
 If that shows an error, refer to these commands
 sudo apt-get install -y libgl1 libglib2.0-0
+
+8. Download data from Github Releases
+
+Run this command : `python download_modelfiles_data.py`
+
+9. 
